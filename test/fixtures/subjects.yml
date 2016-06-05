@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  quantity_of_labs: 1
+  deadline: 2016-06-05
+  priority: 1
+
+two:
+  title: MyString
+  quantity_of_labs: 1
+  deadline: 2016-06-05
+  priority: 1
