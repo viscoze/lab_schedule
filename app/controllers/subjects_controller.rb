@@ -3,10 +3,6 @@ class SubjectsController < ApplicationController
     @subjects = Subject.all.order('id ASC')
   end
 
-  def show
-    @subject =  Subject.find(params[:id])
-  end
-
   def new
     @subject = Subject.new
   end
