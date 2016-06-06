@@ -1,6 +1,7 @@
 class SubjectsController < ApplicationController
   def index
     @subjects = Subject.all.order('id ASC')
+    render component: 'Layout'
   end
 
   def new
