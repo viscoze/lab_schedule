@@ -16,6 +16,8 @@ gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
 gem 'babel-transpiler'
 
+gem 'responder'
+
 group :development, :test do
   gem 'byebug'
 end

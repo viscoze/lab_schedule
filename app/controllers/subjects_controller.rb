@@ -1,25 +1,15 @@
 class SubjectsController < ApplicationController
-  def index
-    @subjects = Subject.all.order('id ASC')
-    render component: 'Layout'
+  def root
+    render component: 'App'
   end
 
-  def new
-    @subject = Subject.new
+  def index
+    @subjects = Subject.all.order('id ASC')
+    render json: @subjects
   end
 
   def create
     @subject  = Subject.new subject_params
-
-    if @subject.save
-      redirect_to root_url
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @subject = Subject.find(params[:id])
   end
 
   def update

@@ -1,11 +1,12 @@
-class App extends React.Component {
+class Layout extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div>Hello, React!</div>
+      <div>
+      </div>
     );
   }
 }

@@ -1,8 +1,4 @@
 class LabsController < ApplicationController
-  def new
-    @lab = Lab.new
-  end
-
   def create
     @lab = Lab.new lab_params
 
@@ -11,10 +7,6 @@ class LabsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
-    @lab = Lab.find(params[:id])
   end
 
   def update
@@ -36,6 +28,6 @@ class LabsController < ApplicationController
   private
 
   def lab_params
-    params.require(:lab).permit()
+    params.require(:lab).permit(:title, :description, :deadline)
   end
 end

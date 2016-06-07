@@ -17,4 +17,26 @@
 //= require react
 //= require react_ujs
 //= require components
-//= require_tree .
+//= require_tree
+
+function sendRequest(method, route, callback) {
+  let request = new XMLHttpRequest();
+  let response;
+
+  request.onreadystatechange = () => {
+    if (request.readyState === 4) {
+      if (request.status === 200) {
+        response = request.response;
+        callback(null, response);
+      } else {
+        callback(request.response);
+        throw new Error(request.response);
+      }
+    }
+  };
+
+  request.open(method,route);
+  request.send();
+
+  return response;
+}

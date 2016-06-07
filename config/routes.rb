@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "subjects#index"
+  root "subjects#root"
   resources :subjects do
     resources :labs, only: [:new, :create, :edit, :destroy, :update]
   end
