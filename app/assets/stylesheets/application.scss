@@ -14,5 +14,67 @@
  *= require_self
  */
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background-color: #f0f2f5;
+  padding: 50px 100px 100px 50px;
+}
+
+.subject-card {
+  background-color: white;
+  padding: 5px;
+  border-radius: 3px;
+  transition: box-shadow 0.5s;
+  margin-bottom: 50px;
+
+  &:hover {
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  }
+
+  .subject {
+    padding: 5px;
+
+    .header {
+      display: block;
+      border-bottom: 1px solid #0080FF;
+      padding-left: 10px;
+
+      .number {
+        display: inline-block;
+        font-size: x-large;
+        font-weight: bolder;
+        color: #0080FF;
+      }
+
+      .title {
+        display: inline-block;
+        font-size: x-large;
+        font-weight: bolder;
+        color: #0080FF;
+      }
+    }
+
+    .description {
+      display: block;
+    }
+
+    .labs {
+
+    }
+  }
+}
+
+.side-bar {
+  background-color: rgba(0,180,255,0.9);;
+  padding: 5px;
+  border-radius: 3px;
+  height: 600px;
+
+  transition: box-shadow 0.5s;
+
+  &:hover {
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  }
+}

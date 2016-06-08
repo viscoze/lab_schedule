@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   def root
-    render component: 'App'
+    render component: 'Layout'
   end
 
   def index
@@ -8,24 +8,35 @@ class SubjectsController < ApplicationController
     render json: @subjects
   end
 
+  def show
+    @subject = Subject.find(params[:id])
+    render json: { subject: @subject, labs: @subject.labs.as_json }
+  end
+
   def create
     @subject  = Subject.new subject_params
+
+    if @subject.save
+      render json: @subjects
+    else
+      render json: { result: "fail" }
+    end
   end
 
   def update
     @subject = Subject.find(params[:id])
 
     if @subject.update(subject_params)
-      redirect_to root_url
+      render json: @subjects
     else
-      render :edit
+      render json: { result: "fail" }
     end
   end
 
   def destroy
     @subject = Subject.find(params[:id])
     @subject.destroy
-    redirect_to root_url
+    render json: @subjects
   end
 
   private

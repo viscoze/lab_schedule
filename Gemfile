@@ -21,6 +21,9 @@ gem 'babel-transpiler'
 gem 'responder'
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'cucumber-rails'
+  gem 'webrat'
   gem 'byebug'
 end
 
