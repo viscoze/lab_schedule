@@ -4,7 +4,7 @@ class LabList extends React.Component {
   }
 
   render() {
-    const labs = this.props.labs;
+    const labs = this.props.labs ? this.props.labs : [] ;
 
     return (
       <div className="labs">

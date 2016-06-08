@@ -1,11 +1,17 @@
 class SubjectsController < ApplicationController
+  def serialize_subject(subject)
+    labs = subject.labs
+    subject.as_json.merge(labs: labs.as_json)
+  end
+
   def root
     render component: 'Layout'
   end
 
   def index
     @subjects = Subject.all.order('id ASC')
-    render json: @subjects
+    subjects_with_labs = @subjects.map { |subject| serialize_subject(subject) }
+    render json: subjects_with_labs
   end
 
   def show
@@ -17,7 +23,7 @@ class SubjectsController < ApplicationController
     @subject  = Subject.new subject_params
 
     if @subject.save
-      render json: @subjects
+      render json: @subject
     else
       render json: { result: "fail" }
     end

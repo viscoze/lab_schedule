@@ -1,29 +1,6 @@
 class Subject extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      subject : {},
-      labs:     []
-    };
-  }
-
-  componentDidMount() {
-    let id = this.props.subject.id;
-    sendRequest('GET', `/subjects/${id}`, function(err, _data) {
-      if (err) throw new Error(err);
-      let data    = JSON.parse(_data);
-      let subject = data.subject;
-      let labs    = data.labs;
-      this.setState({
-        subject: subject,
-        labs:    labs
-      });
-    }.bind(this));
-  }
-
   render() {
-    const { id, title, deadline } = this.state.subject;
-    const labs = this.state.labs;
+    const { id, title, deadline, labs } = this.props.subject;
 
     return (
       <div className="subject-card">

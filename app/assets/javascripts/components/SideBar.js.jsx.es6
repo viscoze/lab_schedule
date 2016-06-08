@@ -1,12 +1,8 @@
 class SideBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="side-bar">
-        <SubjectForm />
+        <SubjectForm addSubject={this.props.addSubject} />
       </div>
     );
   }
