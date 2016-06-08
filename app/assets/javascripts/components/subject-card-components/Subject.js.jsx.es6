@@ -22,7 +22,7 @@ class Subject extends React.Component {
   }
 
   render() {
-    const { id, title, deadline, description } = this.state.subject;
+    const { id, title, deadline } = this.state.subject;
     const labs = this.state.labs;
 
     return (
@@ -31,8 +31,7 @@ class Subject extends React.Component {
           <div className="col-md-11">
             <div className="subject">
               <Header id={id} title={title} deadline={deadline} />
-              <Description description={description} />
-              <Labs labs={labs} />
+              <LabList labs={labs} />
             </div>
           </div>
           <div className="col-md-1">

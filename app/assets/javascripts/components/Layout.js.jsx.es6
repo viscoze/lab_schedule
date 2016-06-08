@@ -20,7 +20,7 @@ class Layout extends React.Component {
           <div className="col-md-8">
             <SubjectList subjects={this.state.subjects}/>
           </div>
-          <div className="col-md-offset-1 col-md-3">
+          <div className="col-sm-offset-1 col-md-3">
             <SideBar />
           </div>
         </div>

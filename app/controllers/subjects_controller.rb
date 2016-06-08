@@ -42,7 +42,7 @@ class SubjectsController < ApplicationController
   private
 
   def subject_params
-    params.require(:subject).permit(:title, :description, :quantity_of_labs,
+    params.require(:subject).permit(:title, :quantity_of_labs,
                                     :deadline, :priority)
   end
 end
