@@ -1,8 +1,5 @@
 class SubjectsController < ApplicationController
-  def serialize_subject(subject)
-    labs = subject.labs
-    subject.as_json.merge(labs: labs.as_json)
-  end
+  # before_action :authenticate_user!, only: :root
 
   def root
     render component: 'Layout'
@@ -12,11 +9,6 @@ class SubjectsController < ApplicationController
     @subjects = Subject.all.order('id ASC')
     subjects_with_labs = @subjects.map { |subject| serialize_subject(subject) }
     render json: subjects_with_labs
-  end
-
-  def show
-    @subject = Subject.find(params[:id])
-    render json: { subject: @subject, labs: @subject.labs.as_json }
   end
 
   def create
@@ -42,10 +34,15 @@ class SubjectsController < ApplicationController
   def destroy
     @subject = Subject.find(params[:id])
     @subject.destroy
-    render json: @subjects
+    index
   end
 
   private
+
+  def serialize_subject(subject)
+    labs = subject.labs
+    subject.as_json.merge(labs: labs.as_json)
+  end
 
   def subject_params
     params.require(:subject).permit(:title, :quantity_of_labs,

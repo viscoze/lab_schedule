@@ -30,6 +30,11 @@ class SubjectForm extends React.Component {
     }).then((response) => {
       this.addSubject(response);
     }, (err) => console.log("FUCK!"));
+
+    this.refs.title.value = "";
+    this.refs.quantity_of_labs.value = "";
+    this.refs.priority.value = "";
+    this.refs.deadline.value = "";
   }
 
   render() {
@@ -54,7 +59,7 @@ class SubjectForm extends React.Component {
             <input type="date" className="form-control" id="deadline" ref="deadline" />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-default btn-block">Add Subject</button>
+            <button type="submit" className="btn btn-warning btn-block">Add Subject</button>
           </div>
         </form>
       </div>

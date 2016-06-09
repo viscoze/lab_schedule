@@ -1,11 +1,14 @@
 class LabsController < ApplicationController
+  # before_action :authenticate_user!
+
   def create
-    @lab = Lab.new lab_params
+    @subject = Subject.find(params[:subject_id])
+    @lab = @subject.labs.build lab_params
 
     if @lab.save
-      redirect_to root_url
+      render json: @lab
     else
-      render :new
+      render json: { result: "fail" }
     end
   end
 
@@ -28,6 +31,6 @@ class LabsController < ApplicationController
   private
 
   def lab_params
-    params.require(:lab).permit(:title, :description, :deadline)
+    params.require(:lab).permit(:title, :deadline)
   end
 end

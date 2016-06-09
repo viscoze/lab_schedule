@@ -24,13 +24,37 @@ body {
 
 .subject-card {
   background-color: white;
-  padding: 5px;
+  padding: 5px 5px 15px;
   border-radius: 3px;
   transition: box-shadow 0.5s;
   margin-bottom: 50px;
 
   &:hover {
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  }
+
+  .add-lab {
+    margin-top: 30px;
+    
+    input {
+      margin-left: 5px;
+    }
+
+    input[type="text"] {
+      margin-right: 10px;
+    }
+
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  .labs-buttons {
+    margin-top: 10px;
+    margin-left: 390px;
+    button {
+      margin-right: 20px;
+    }
   }
 
   .subject {
@@ -58,10 +82,11 @@ body {
 
     .labs {
       padding: 15px;
+      padding-bottom: 0px;
 
       .lab {
         border: 2px solid #0080FF;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 5px 10px 5px;
 
         .header {
@@ -91,17 +116,15 @@ body {
 }
 
 .side-bar {
-  background-color: rgba(0,180,255,0.9);;
+  background-color: rgba(0,180,255,0.9);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
   padding: 5px;
   border-radius: 3px;
   height: 700px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  width:  270px;
+  position: fixed;
 
   .subject-form {
     color: white;
-
-    button {
-      
-    }
   }
 }

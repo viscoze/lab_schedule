@@ -4,6 +4,7 @@ class Layout extends React.Component {
     this.state = { subjects: [] };
 
     this.addSubject = this.addSubject.bind(this);
+    this.refreshSubjects = this.refreshSubjects.bind(this);
   }
 
   componentDidMount() {
@@ -15,19 +16,22 @@ class Layout extends React.Component {
   }
 
   addSubject(subject) {
-    console.log(subject);
-    console.log(this.state.subjects);
     this.setState({ subjects: this.state.subjects.concat([subject]) });
+  }
+
+  refreshSubjects(subjects) {
+    this.setState({ subjects: subjects })
   }
 
   render() {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-8">
-            <SubjectList subjects={this.state.subjects}/>
+          <div className="col-md-7">
+            <SubjectList subjects={this.state.subjects}
+                         refreshSubjects={this.refreshSubjects} />
           </div>
-          <div className="col-sm-offset-1 col-md-3">
+          <div className="col-sm-offset-2 col-md-3">
             <SideBar addSubject={this.addSubject}/>
           </div>
         </div>

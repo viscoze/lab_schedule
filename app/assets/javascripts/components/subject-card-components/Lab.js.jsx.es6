@@ -11,7 +11,6 @@ class Lab extends React.Component {
         <div className="row">
           <div className="col-md-10">
             <Header id={id} title={title} deadline={deadline} />
-            <Description description={description}/>
           </div>
           <div className="col-md-2">
           </div>
