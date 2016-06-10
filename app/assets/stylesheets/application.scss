@@ -34,8 +34,9 @@ body {
   }
 
   .add-lab {
-    margin-top: 30px;
-    
+    margin-top: 20px;
+    padding-left: 50px;
+
     input {
       margin-left: 5px;
     }
@@ -51,7 +52,7 @@ body {
 
   .labs-buttons {
     margin-top: 10px;
-    margin-left: 390px;
+    margin-left: 400px;
     button {
       margin-right: 20px;
     }
@@ -60,24 +61,13 @@ body {
   .subject {
     padding: 5px;
 
-    & > .header {
+    .header {
       display: block;
       border-bottom: 2px solid #0080FF;
       padding-left: 10px;
-
-      .number {
-        display: inline-block;
-        font-size: x-large;
-        font-weight: bolder;
-        color: #0080FF;
-      }
-
-      .title {
-        display: inline-block;
-        font-size: x-large;
-        font-weight: bolder;
-        color: #0080FF;
-      }
+      font-size: x-large;
+      font-weight: bolder;
+      color: #0080FF;
     }
 
     .labs {
@@ -88,27 +78,14 @@ body {
         border: 2px solid #0080FF;
         border-radius: 5px;
         padding: 5px 10px 5px;
+        margin-bottom: 5px;
 
         .header {
           display: block;
-
-          .number {
-            display: inline-block;
-            font-size: medium;
-            font-weight: bolder;
-            color: #0080FF;
-          }
-
-          .title {
-            display: inline-block;
-            font-size: medium;
-            font-weight: bolder;
-            color: #0080FF;
-          }
-        }
-
-        .description {
-
+          vertical-align: text-bottom;
+          font-size: medium;
+          font-weight: bolder;
+          color: #0080FF;
         }
       }
     }

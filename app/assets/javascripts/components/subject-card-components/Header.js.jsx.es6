@@ -18,10 +18,12 @@ class Header extends React.Component {
             </span>
           </div>
           <div className="col-md-5">
-            {
-              this.props.deadline ?
-              `Deadline: ${this.props.deadline}` : ''
-            }
+            <span className="deadline">
+              {
+                this.props.deadline ?
+                `Deadline: ${this.props.deadline}` : ''
+              }
+            </span>
           </div>
         </div>
       </div>

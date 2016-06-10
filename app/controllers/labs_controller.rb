@@ -23,9 +23,11 @@ class LabsController < ApplicationController
   end
 
   def destroy
+    @subject = Subject.find(params[:subject_id])
+    @labs = @subject.labs
     @lab = Lab.find(params[:id])
     @lab.destroy
-    redirect_to root_url
+    render json: @labs
   end
 
   private

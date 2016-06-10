@@ -1,28 +1,18 @@
 class Subject extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { labs : this.props.subject.labs  };
 
-    this.onDelete = this.onDelete.bind(this);
-    this.refreshSubjects = this.props.refreshSubjects.bind(this);
+    this.onSubjectDelete = this.onSubjectDelete.bind(this);
+    this.refreshLabs = this.refreshLabs.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    //this.addLab = this.props.addLab.bind(this);
-  }
-
-  onDelete(e) {
-    e.preventDefault();
-    let id = this.props.subject.id;
-
-    $.ajax({
-      url: `/subjects/${id}`,
-      method: 'DELETE',
-      dataType: 'json'
-    }).then((response) => {
-      this.refreshSubjects(response);
-    }, (err) => console.log("FUCK!"));
+    this.addLab = this.addLab.bind(this);
+    this.refreshSubjects = this.props.refreshSubjects.bind(this);
   }
 
   submitForm(e) {
     e.preventDefault();
+    const id = this.props.subject.id;
     const title = this.refs.title.value;
     const deadline = this.refs.deadline.value;
 
@@ -39,15 +29,37 @@ class Subject extends React.Component {
       data: lab,
       dataType: 'json'
     }).then((response) => {
-      //this.addLab(response);
+      this.addLab(response);
     }, (err) => console.log("FUCK!"));
 
     this.refs.title.value = "";
     this.refs.deadline.value = "";
   }
 
+  addLab(lab) {
+    this.setState({ labs: this.state.labs.concat([lab]) });
+  }
+
+  refreshLabs(labs) {
+    this.setState({ labs: labs });
+  }
+
+  onSubjectDelete(e) {
+    e.preventDefault();
+    const id = this.props.subject.id;
+
+    $.ajax({
+      url: `/subjects/${id}`,
+      method: 'DELETE',
+      dataType: 'json'
+    }).then((response) => {
+      this.refreshSubjects(response);
+    }, (err) => console.log("FUCK!"));
+  }
+
   render() {
-    const { title, deadline, labs } = this.props.subject;
+    const { title, deadline } = this.props.subject;
+    const labs = this.state.labs;
     const id = this.props.id;
 
     return (
@@ -56,18 +68,19 @@ class Subject extends React.Component {
           <div className="col-md-12">
             <div className="subject">
               <Header id={id} title={title} deadline={deadline} />
-              <LabList labs={labs} />
+              <LabList subject_id={this.props.subject.id}
+                       labs={labs} refreshLabs={this.refreshLabs} />
             </div>
           </div>
         </div>
-        <div className="container">
+        <div className="row">
           <div className="labs-buttons">
             <button className="btn btn-warning">Done</button>
             <button className="btn btn-success">Pass</button>
-            <button onClick={this.onDelete} className="btn btn-danger">Delete</button>
+            <button onClick={this.onSubjectDelete} className="btn btn-danger">Delete</button>
           </div>
         </div>
-        <div className="container">
+        <div className="row">
           <div className="add-lab">
             <form className="form-inline" onSubmit={this.submitForm}>
               <div className="form-group">

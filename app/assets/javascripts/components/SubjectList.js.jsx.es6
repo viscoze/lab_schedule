@@ -1,6 +1,5 @@
 class SubjectList extends React.Component {
   render() {
-    let size = this.props.length;
     let currentIndex = 0;
     return (
       <div>

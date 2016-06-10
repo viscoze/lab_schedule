@@ -20,7 +20,7 @@ class Layout extends React.Component {
   }
 
   refreshSubjects(subjects) {
-    this.setState({ subjects: subjects })
+    this.setState({ subjects: subjects });
   }
 
   render() {
